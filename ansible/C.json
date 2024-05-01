@@ -1,0 +1,50 @@
+{
+    "agent": {
+      "metrics_collection_interval": 60,
+      "run_as_user": "cwagent"
+    },
+    "metrics": {
+      "metrics_collected": {
+        "disk": {
+          "measurement": [
+            "used_percent"
+          ],
+          "metrics_collection_interval": 60,
+          "resources": [
+            "*"
+          ]
+        },
+        "mem": {
+          "measurement": [
+            "mem_used_percent"
+          ],
+          "metrics_collection_interval": 60
+        }
+      },
+      "append_dimensions": {
+        "AutoScalingGroupName": "{{ ansible_ec2_tag_AutoScalingGroupName }}",
+        "InstanceId": "{{ ansible_ec2_instance_id }}"
+      }
+    },
+    "logs": {
+      "logs_collected": {
+        "files": {
+          "collect_list": [
+            {
+              "file_path": "/var/log/syslog",
+              "log_group_name": "syslog",
+              "log_stream_name": "{instance_id}",
+              "timezone": "Local"
+            },
+            {
+              "file_path": "/var/log/auth.log",
+              "log_group_name": "auth-log",
+              "log_stream_name": "{instance_id}",
+              "timezone": "Local"
+            }
+          ]
+        }
+      }
+    }
+  }
+  

@@ -1,7 +1,0 @@
-[jenkins_servers]
-jenkins1.example.com
-jenkins2.example.com
-
-[ec2_instances]
-ec2-1.compute.amazonaws.com
-ec2-2.compute.amazonaws.com
